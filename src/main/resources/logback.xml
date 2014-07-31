@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+<!-- log日志文件存放的地址 -->
+<property name="logback.logs.path" value="/logs"/>
+<property name="logback.project.name" value="test"/>
+<timestamp key="date" datePattern="yyyyMMdd"/>
+<contextName>{date}</contextName>
+<appender name="debugfile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+	<!-- 设置文件路径格式 -->
+	<!--file>/logs/debugfile/debug.log</file-->
+	<!-- 设置文件格式 -->
+	<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	<!-- 文件路径在项目目录的logs/debug/debug.XXXX-XX-XX.log文件 -->
+	<FileNamePattern>{logback.logs.path}/debug/debug.%d{yyyy-MM-dd}.log</FileNamePattern>
+	<!-- 设置文件的最大数量 -->
+	<MAXhistory>30</MAXhistory>
+	</rollingPolicy>
+	<encoder charset="utf-8">
+		<!--%d表示时间	%thread表示线程名	%-5level：级别从左显示5个字符宽度 	%msg：日志消息 %n表示换行-->
+		<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{20} - %msg%n</pattern>
+	</encoder>
+	<filter class="ch.qos.logback.classic.filter.LeveFilter">
+		<level>DEBUG</level>
+		<onMatch>ACCEPT</onMatch>
+		<onMisMatch>DENY</onMisMatch>
+	</filter>
+</appender>
+<appender name="infoFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+<encoder charset="utf-8">
+<pattern>%d{HH:mm:ss.SSS} [%thread]	%-5level %logger{20}-%msg%n</pattern>
+</encoder>
+<filter>
+<level>INFO</level>
+<onMatch>ACCEPT</onMatch>
+<onMisMatch>DENY</onMisMatch>
+</filter>
+</appender>
+<foot></foot>
+</configuration>

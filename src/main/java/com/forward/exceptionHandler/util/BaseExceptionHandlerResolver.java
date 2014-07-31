@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMeth
 
 public class BaseExceptionHandlerResolver extends
 		SimpleMappingExceptionResolver {
+	
 
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	private String exceptionAttribute = DEFAULT_EXCEPTION_ATTRIBUTE;
